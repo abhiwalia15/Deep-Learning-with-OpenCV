@@ -143,3 +143,28 @@ In order to build our multi-input network we will need two branches:
 *The first branch will be a simple Multi-layer Perceptron (MLP) designed to handle the categorical/numerical inputs.
 *The second branch will be a Convolutional Neural Network to operate over the image data.
 *These branches will then be concatenated together to form the final multi-input Keras model.
+
+_________________________________________________________________________________________________________________________
+
+SUMMARY
+
+In this tutorial, you learned how to define a Keras network capable of accepting multiple inputs.
+
+You learned how to work with mixed data using Keras as well.
+
+To accomplish these goals we defined a multiple input neural network capable of accepting:
+
+Numerical data
+Categorical data
+Image data
+The numerical data was min-max scaled to the range [0, 1] prior to training. Our categorical data was one-hot encoded (also ensuring the resulting integer vectors were in the range [0, 1]).
+
+The numerical and categorical data were then concatenated into a single feature vector to form the first input to the Keras network.
+
+Our image data was also scaled to the range [0, 1] — this data served as the second input to the Keras network.
+
+One branch of the model included strictly fully-connected layers (for the concatenated numerical and categorical data) while the second branch of the multi-input model was essentially a small Convolutional Neural Network.
+
+The outputs of both branches were combined and a single output (the regression prediction) was defined.
+
+In this manner, we were able to train our multiple input network end-to-end, resulting in better accuracy than using just one of the inputs alone.
