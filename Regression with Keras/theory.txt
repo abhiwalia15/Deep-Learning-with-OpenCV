@@ -104,4 +104,16 @@ This tiled image will then be passed through the CNN using the house price as th
 The benefit of this approach is that we are:
 
 Allowing the CNN to learn from all photos of the house rather than trying to pass the house photos through the CNN one at a time
-Enabling the CNN to learn discriminative filters from all house photos at once (i.e., not “confusing” the CNN with different images with identical target predicted values)
+Enabling the CNN to learn discriminative filters from all house photos at once (i.e., not “confusing” the CNN with different images 
+with identical target predicted values).
+
+SUMMARY:
+Implementing a CNN for regression prediction is as simple as:
+
+Removing the fully-connected softmax classifier layer typically used for classification
+Replacing it a fully-connected layer with a single node along with a linear activation function.
+Training the model with continuous value prediction loss function such as mean squared error, mean absolute error
+, mean absolute percentage error, etc.
+What makes this method so powerful is that it implies that we can fine-tune existing models for regression prediction —
+simply remove the old FC + softmax
+layer, add in a single node FC layer with a linear activation, update your loss method, and start training!
