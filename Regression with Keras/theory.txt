@@ -86,6 +86,22 @@ But how are we going to use these images to train our CNN?
 
 We essentially have three options:
 
-Pass the images one at a time through the CNN and use the price of the house as the target value for each image
-Utilize multiple inputs with Keras and have four independent CNN-like branches that eventually merge into a single output
-Create a montage that combines/tiles all four images into a single image and then pass the montage through the CNN
+*Pass the images one at a time through the CNN and use the price of the house as the target value for each image
+*Utilize multiple inputs with Keras and have four independent CNN-like branches that eventually merge into a single output
+*Create a montage that combines/tiles all four images into a single image and then pass the montage through the CNN.
+
+Instead, we should choose the third option where we combine all four images into a single image and then pass
+ that image through the CNN (as depicted in Figure 2 above).
+
+For each house in our dataset, we will create a corresponding tiled image that that includes:
+
+The bathroom image in the top-left
+The bedroom image in the top-right
+The frontal view in the bottom-right
+The kitchen in the bottom-left
+This tiled image will then be passed through the CNN using the house price as the target predicted value.
+
+The benefit of this approach is that we are:
+
+Allowing the CNN to learn from all photos of the house rather than trying to pass the house photos through the CNN one at a time
+Enabling the CNN to learn discriminative filters from all house photos at once (i.e., not “confusing” the CNN with different images with identical target predicted values)
