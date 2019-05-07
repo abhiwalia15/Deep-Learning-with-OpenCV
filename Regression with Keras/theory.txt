@@ -117,3 +117,29 @@ Training the model with continuous value prediction loss function such as mean s
 What makes this method so powerful is that it implies that we can fine-tune existing models for regression prediction —
 simply remove the old FC + softmax
 layer, add in a single node FC layer with a linear activation, update your loss method, and start training!
+
+------------------------------
+In machine learning, mixed data refers to the concept of having multiple types of independent data.
+
+For example, let’s suppose we are machine learning engineers working at a hospital to develop a system capable of classifying the health of a patient.
+
+We would have multiple types of input data for a given patient, including:
+
+Numeric/continuous values, such as age, heart rate, blood pressure
+Categorical values, including gender and ethnicity
+Image data, such as any MRI, X-ray, etc.
+All of these values constitute different data types; however, our machine learning model must be able to ingest this “mixed data” and make (accurate) predictions on it.
+
+You will see the term “mixed data” in machine learning literature when working with multiple data modalities.
+
+Developing machine learning systems capable of handling mixed data can be extremely challenging as each data type may require separate preprocessing steps, including scaling, normalization, and feature engineering.
+
+Working with mixed data is still very much an open area of research and is often heavily dependent on the specific task/end goal.
+
+
+\\\\\\\\\\\\\\\\\\\\\\
+In order to build our multi-input network we will need two branches:
+
+*The first branch will be a simple Multi-layer Perceptron (MLP) designed to handle the categorical/numerical inputs.
+*The second branch will be a Convolutional Neural Network to operate over the image data.
+*These branches will then be concatenated together to form the final multi-input Keras model.
